@@ -1,19 +1,16 @@
 import React from "react";
 import type { NextPage } from "next";
-import Head from "next/head";
-import { fetcher } from "../api";
-import styles from "../styles/Home.module.css";
-import { Box, Container, Grid, LinearProgress } from "@mui/material";
-import { Schedule } from "../model/api";
-import ScheduleCard from "../components/widgets/schedule-card";
 import useSWR from "swr";
 
-type PageProps = {
-  content: Schedule[];
-  errorCode?: number;
-};
+import { fetcher } from "../api";
+import styles from "../styles/Home.module.css";
+import { Container, Grid } from "@mui/material";
+import { Schedule } from "../model/api";
+import ScheduleCard from "../components/widgets/schedule-card";
+import HeadWrapper from "../components/wrappers/head";
+import { Loading } from "../components/widgets/loading";
 
-const Home: NextPage<PageProps> = () => {
+const Home: NextPage = () => {
   const defaultDate = new Date().toISOString().split("T").shift() || "";
   const params = {
     country: "GB",
@@ -30,19 +27,11 @@ const Home: NextPage<PageProps> = () => {
     return <div>Failed to load</div>;
   }
   if (!schedules) {
-    return (
-      <Box sx={{ width: "100%" }}>
-        <LinearProgress />
-      </Box>
-    );
+    return <Loading />;
   }
 
   return (
-    <>
-      <Head>
-        <title>Tv maze browser</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <HeadWrapper>
       <div className={styles.header}>
         <Container maxWidth="xl">
           <h1>TV Bland</h1>
@@ -65,7 +54,7 @@ const Home: NextPage<PageProps> = () => {
           </Grid>
         </Container>
       </div>
-    </>
+    </HeadWrapper>
   );
 };
 

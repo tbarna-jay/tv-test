@@ -1,0 +1,102 @@
+.header {
+  padding-top: 10px;
+  background-color: #dcd0ea;
+}
+
+.headerContainer {
+  position: relative;
+  top: 0px;
+  padding-bottom: 20px;
+}
+
+.image {
+  margin-bottom: 20px;
+}
+
+.defaultImage {
+  width: 290px;
+  min-height: 430px;
+  background-color: #c9c9c9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mainContent {
+  margin-left: 0px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating strong {
+  margin-left: 4px;
+}
+
+.lists {
+  padding-top: 30px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.back {
+  position: absolute;
+  right: 16px;
+  top: 0;
+}
+
+.list li:first-child {
+  border-top: 1px solid #333;
+}
+
+.list li {
+  height: 80px;
+  line-height: 58px;
+  border-bottom: 1px solid #333;
+  display: flex;
+  padding: 12px 0;
+}
+
+.list li label {
+  width: 215px;
+  display: inline-block;
+}
+
+.avatar {
+  height: 50px;
+  width: 50px;
+  background-size: cover;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  overflow: hidden;
+  margin-right: 8px;
+}
+
+.avatar img {
+  width: 50px;
+}
+
+@media (min-width: 800px) {
+  .main {
+    flex-wrap: nowrap;
+  }
+
+  .mainContent {
+    margin-left: 48px;
+  }
+
+  .headerContainer {
+    top: 70px;
+  }
+}

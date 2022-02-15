@@ -24,6 +24,34 @@ export interface Self {
   href?: string;
 }
 
+export interface Character {
+  id?: number;
+  url?: string;
+  name?: string;
+  image?: Image;
+  _links?: ShowLinks;
+}
+
+export interface Person {
+  id: number;
+  url: string;
+  name: string;
+  country: Country;
+  birthday?: string;
+  deathday?: string;
+  gender: string;
+  image: Image;
+  updated: number;
+  _links: ShowLinks;
+}
+
+export interface Actor {
+  person: Person;
+  character: Character;
+  self: boolean;
+  voice: boolean;
+}
+
 export interface Show {
   id?: number;
   url?: string;
@@ -45,6 +73,9 @@ export interface Show {
   summary?: string;
   updated?: number;
   _links?: ShowLinks;
+  _embedded?: {
+    cast?: Actor[];
+  };
 }
 
 export interface Externals {
