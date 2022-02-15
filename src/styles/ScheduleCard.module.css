@@ -1,0 +1,7 @@
+.defaultImage {
+  height: 295px;
+  background-color: #c9c9c9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

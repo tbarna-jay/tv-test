@@ -12,7 +12,7 @@ export interface Schedule {
   runtime: number;
   image?: null;
   summary?: null | string;
-  show?: Show;
+  show: Show;
   _links?: ScheduleLinks;
 }
 
@@ -41,7 +41,7 @@ export interface Show {
   network?: Network;
   webChannel?: Network | null;
   externals?: Externals;
-  image?: Image | null;
+  image: Image;
   summary?: string;
   updated?: number;
   _links?: ShowLinks;

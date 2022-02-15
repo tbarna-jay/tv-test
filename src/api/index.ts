@@ -13,15 +13,17 @@ type SheduleParam = {
 
 const getShedule = async (
   params: SheduleParam
-): Promise<ApiResponse<Schedule>> => {
+): Promise<ApiResponse<Schedule[]>> => {
   try {
-    const url = `${apiUrl}/shows?${stringifyParams(params)}`;
+    const url = `${apiUrl}/schedule?${stringifyParams(params)}`;
+    console.log(url);
     const res = await fetch(url);
     const errorCode = res.ok ? res?.status : 500;
     const content = await res.json();
     if (!content || errorCode !== 200)
       console.error("API error: ", errorCode, url);
-    return { errorCode: errorCode };
+
+    return { content, errorCode: errorCode };
   } catch (error) {
     console.error(error);
     return { errorCode: 500 };
