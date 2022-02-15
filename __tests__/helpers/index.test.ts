@@ -18,4 +18,9 @@ describe("stringifyParams function", () => {
       })
     ).toBe("country=GB&date=2022-02-13");
   });
+
+  it("should return empty string if it didn't get param", () => {
+    expect(stringifyParams()).toBe("");
+    expect(stringifyParams({})).toBe("");
+  });
 });
