@@ -1,35 +1,27 @@
 import getConfig from "next/config";
 import { stringifyParams } from "../helpers/api";
-import { ApiResponse, Schedule } from "../model/api";
 
 const {
   publicRuntimeConfig: { apiUrl },
 } = getConfig();
 
-type SheduleParam = {
-  country: "GB" | "US";
-  date?: string;
+type fetcherParams = {
+  params: { [key: string]: string };
+  path: string;
 };
 
-const getShedule = async (
-  params: SheduleParam
-): Promise<ApiResponse<Schedule[]>> => {
-  try {
-    const url = `${apiUrl}/schedule?${stringifyParams(params)}`;
-    console.log(url);
-    const res = await fetch(url);
-    const errorCode = res.ok ? res?.status : 500;
-    const content = await res.json();
-    if (!content || errorCode !== 200)
-      console.error("API error: ", errorCode, url);
+export const fetcher = async ({ params, path }: fetcherParams) => {
+  const url = `${apiUrl}${path}?${stringifyParams(params)}`;
+  const res = await fetch(url);
 
-    return { content, errorCode: errorCode };
-  } catch (error) {
-    console.error(error);
-    return { errorCode: 500 };
+  if (!res.ok) {
+    const error = new Error(
+      "An error occurred while fetching the data."
+    ) as Error & { info: unknown; status: number };
+    error.info = await res.json();
+    error.status = res.status;
+    throw error;
   }
-};
 
-export default {
-  getShedule,
+  return await res.json();
 };

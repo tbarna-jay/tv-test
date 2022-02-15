@@ -10,16 +10,13 @@ type Props = {
 const ScheduleCard = ({
   schedule: {
     id,
-    show: {
-      name,
-      image,
-      rating: { average },
-    },
+    show: { name, image, rating },
   },
 }: Props): ReactElement => {
+  const ratingNumber = (rating?.average || 0) / 2;
   return (
     <div key={id}>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ width: 210, height: 295 }}>
         <CardActionArea>
           {image?.medium ? (
             <CardMedia
@@ -44,7 +41,7 @@ const ScheduleCard = ({
       </Card>
       <Rating
         name="half-rating"
-        defaultValue={average / 2}
+        defaultValue={ratingNumber}
         precision={0.1}
         readOnly
       />
