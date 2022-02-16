@@ -1,4 +1,7 @@
-import { Card, CardActionArea, CardMedia, Rating } from "@mui/material";
+import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardMedia from "@mui/material/CardMedia";
+import Rating from "@mui/material/Rating";
 import Link from "next/link";
 import React, { ReactElement } from "react";
 import { Schedule } from "../../model/api";

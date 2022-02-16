@@ -4,7 +4,8 @@ import useSWR from "swr";
 
 import { fetcher } from "../api";
 import styles from "../styles/Home.module.css";
-import { Container, Grid } from "@mui/material";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
 import { Schedule } from "../model/api";
 import ScheduleCard from "../components/widgets/schedule-card";
 import HeadWrapper from "../components/wrappers/head";

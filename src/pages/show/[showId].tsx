@@ -8,7 +8,9 @@ import styles from "../../styles/Show.module.css";
 import { Actor, Show } from "../../model/api";
 import HeadWrapper from "../../components/wrappers/head";
 import { Loading } from "../../components/widgets/loading";
-import { Container, Rating, Grid } from "@mui/material";
+import Container from "@mui/material/Container";
+import Rating from "@mui/material/Rating";
+import Grid from "@mui/material/Grid";
 import Link from "next/link";
 
 const Home: NextPage = () => {
