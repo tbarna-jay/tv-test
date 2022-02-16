@@ -5,7 +5,6 @@ import useSWR from "swr";
 import { fetcher } from "../api";
 import styles from "../styles/Home.module.css";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import { Schedule } from "../model/api";
 import ScheduleCard from "../components/widgets/schedule-card";
 import HeadWrapper from "../components/wrappers/head";
@@ -46,13 +45,11 @@ const Home: NextPage = () => {
       <div className={styles.cards}>
         <Container maxWidth="xl">
           <h2>Last Added Shows</h2>
-          <Grid container spacing={4}>
+          <div className={styles.cardList}>
             {schedules.map((schedule) => (
-              <Grid item key={schedule.id} sm={6} md={4} lg={3} xl={2}>
-                <ScheduleCard schedule={schedule} />
-              </Grid>
+              <ScheduleCard key={schedule.id} schedule={schedule} />
             ))}
-          </Grid>
+          </div>
         </Container>
       </div>
     </HeadWrapper>

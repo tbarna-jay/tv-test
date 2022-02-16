@@ -7,3 +7,15 @@
 .cards {
   margin-top: -180px;
 }
+
+.cardList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  grid-gap: 20px;
+}
+
+@media (min-width: 800px) {
+  .cardList {
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  }
+}
